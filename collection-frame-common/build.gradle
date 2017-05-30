@@ -1,0 +1,24 @@
+apply plugin: 'java'
+dependencies {
+	compile(libraries.spring_context) { force = true }
+	compile(libraries.spring_beans) { force = true }
+	compile(libraries.spring_core) { force = true }
+	//compile(libraries.spring_security_core){ force = true}
+	//compile(libraries.spring_security_config) {force = true}
+	//compile(libraries.spring_security_web) {force = true}
+	compile(libraries.shiro_spring){force = true}
+	compile(libraries.servlet)
+	
+	//compile(libraries.log4j) { force = true	}
+	compile(libraries.logback) { force = true	}
+	compile(libraries.slf4j_api) { force = true	}
+	testCompile(libraries.slf4j)  { force = true }
+	
+	testCompile(libraries.junit)  { force = true }
+	testCompile(libraries.spring_test) { force = true }
+	
+	compile(libraries.json){force = true}
+	//compile(libraries.json_lib){force = true}
+	
+	compile(libraries.redis_clients){force = true}
+}

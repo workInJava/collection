@@ -1,0 +1,15 @@
+apply plugin: 'war'
+
+dependencies {
+	compile project(':collection-frame-core')
+	compile project(':collection-frame-service')
+	
+	compile(libraries.spring_context_support)
+	compile(libraries.spring_expression) { force = true	}
+	compile(libraries.spring_web) { force = true }
+	compile(libraries.spring_webmvc) { force = true	}
+	compile(libraries.freemarker) { force = true}
+	
+	
+	
+}

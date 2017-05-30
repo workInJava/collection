@@ -1,0 +1,5 @@
+rootProject.name = 'collection'
+include ':collection-frame-common'
+include ':collection-frame-core'
+include ':collection-frame-service'
+include ':collection-web'

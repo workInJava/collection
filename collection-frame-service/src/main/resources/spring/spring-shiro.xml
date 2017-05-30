@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="formAuthenticationFilter"
+		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+		<property name="usernameParam" value="loginName" />
+		<property name="passwordParam" value="password" />
+		<property name="loginUrl" value="/login" />
+	</bean>
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/main/productlist" />
+		<property name="unauthorizedUrl" value="/login" />
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="formAuthenticationFilter" />
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/css/** = anon
+				/images/** = anon
+				/javascripts/** = anon
+				/login = authc
+				/logout = logout
+				/** = user
+			</value>
+		</property>
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="redisCacheManager" />
+		<property name="sessionManager" ref="sessionManager"/>
+	</bean>
+	
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5"/>
+		<property name="hashIterations" value="2"/>
+		<property name="storedCredentialsHexEncoded" value="false"/>
+	</bean>
+
+	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"/>
+		<property name="cacheManager" ref="redisCacheManager"/>
+		<property name="authenticationCachingEnabled" value="true"/>
+	</bean>
+	
+	<!--自己维护session,废弃servlet容器的会话-->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="sessionIdCookie" ref="sessionIdCookie"/><!--会话Cookie的模板 -->
+		<property name="sessionListeners">
+			<list>
+				<ref bean="shiroListener" />
+			</list>
+		</property>
+		<property  name="SessionDAO" ref="sessionDao"/>
+	</bean>
+	
+	<!--会话Cookie的模板 -->
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<property name="name" value="sid"/><!-- 设置Cookie 名字，默认为JSESSIONID -->
+		<property name="HttpOnly" value="true"/>
+	</bean>
+	
+	<bean id="shiroListener" class="com.text.project.auth.listeners.ShiroListener">
+	</bean>
+	
+	<!-- JedisPool manager -->
+	<bean id="jedisManager" class="com.test.common.redis.wrapper.JedisManager">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+    <!-- <bean id="jedisPoolManager" class="com.test.common.redis.wrapper.JedisPoolManager">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean> -->
+    
+     <bean id="redisCacheManager" class="com.text.project.auth.cache.RedisCacheManager">
+        <property name="redisManager" ref="jedisManager"/>
+    </bean>
+	
+	<!-- <bean id="sessionDao" class="com.text.project.auth.sessiondao.RedisSessionDAO">
+		<property name="cacheManager" ref="redisCacheManager"/>
+		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
+	</bean> -->
+	
+	<bean id="sessionDao" class="com.text.project.auth.sessiondao.CustomShiroSessionDAO">
+		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
+	</bean>
+	
+	<bean id="shiroSessionRepository" class="com.text.project.auth.sessiondao.JedisShiroSessionRepository">
+		<property name="jedisManager" ref="jedisManager"/>
+	</bean>
+	
+</beans>
