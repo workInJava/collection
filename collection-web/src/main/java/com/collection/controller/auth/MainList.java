@@ -1,4 +1,4 @@
-package com.spring.controller.auth;
+package com.collection.controller.auth;
 
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.test.project.po.gen.UserDetail;
+import com.collection.project.po.gen.UserDetail;
 
 @Controller
 @RequestMapping(value="main")

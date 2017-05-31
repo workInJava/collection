@@ -1,4 +1,4 @@
-package com.spring.controller.auth;
+package com.collection.controller.auth;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.text.project.test.TestService;
+import com.collection.project.test.TestService;
 
 @Controller
 public class HelloController {
@@ -27,11 +27,11 @@ public class HelloController {
 		String exceptionClassName = (String) req.getAttribute("shiroLoginFailure");
 		String error = null;
 		if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-			error = "ÓÃ»§Ãû/ÃÜÂë´íÎó";
+			error = "ï¿½Ã»ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		} else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
-			error = "ÓÃ»§Ãû/ÃÜÂë´íÎó";
+			error = "ï¿½Ã»ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		} else if (exceptionClassName != null) {
-			error = "ÆäËû´íÎó£º" + exceptionClassName;
+			error = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + exceptionClassName;
 		}
 		LOGGER.info(error);
 		model.addAttribute("error", error);

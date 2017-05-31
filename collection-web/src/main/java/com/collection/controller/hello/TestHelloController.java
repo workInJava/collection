@@ -1,4 +1,4 @@
-package com.spring.controller.hello;
+package com.collection.controller.hello;
 
 import javax.annotation.Resource;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.text.project.test.TestService;
+import com.collection.project.test.TestService;
 
   
 @Controller
