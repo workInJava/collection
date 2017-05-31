@@ -1,4 +1,4 @@
-package com.text.project.auth.cache;
+package com.collection.project.auth.cache;
 
 import java.util.Collection;
 import java.util.Set;
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import redis.clients.jedis.Jedis;
 
-import com.test.common.redis.wrapper.JedisManager;
-import com.test.common.utils.SerializeUtil;
+import com.collection.common.redis.wrapper.JedisManager;
+import com.collection.common.utils.SerializeUtil;
 
 public class RedisCache<K, V> implements Cache<K, V> {
 
@@ -30,9 +30,7 @@ public class RedisCache<K, V> implements Cache<K, V> {
 		this.jedisManager = jedisManager;
 	}
 
-	/**
-	 * 自定义relm中的授权/认证的类名加上授权/认证英文名字
-	 */
+
 	public String getName() {
 		if (name == null)
 			return "";

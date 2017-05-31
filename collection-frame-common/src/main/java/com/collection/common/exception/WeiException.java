@@ -1,4 +1,4 @@
-package com.test.common.exception;
+package com.collection.common.exception;
 
 public class WeiException extends Exception {
 

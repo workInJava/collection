@@ -1,4 +1,4 @@
-package com.test.common.utils;
+package com.collection.common.utils;
 
 public class HelpUtil {
 

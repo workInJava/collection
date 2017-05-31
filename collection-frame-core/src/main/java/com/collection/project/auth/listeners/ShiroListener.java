@@ -1,4 +1,4 @@
-package com.text.project.auth.listeners;
+package com.collection.project.auth.listeners;
 
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.SessionListener;

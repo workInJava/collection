@@ -1,4 +1,4 @@
-package com.test.project.po.gen;
+package com.collection.project.po.gen;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

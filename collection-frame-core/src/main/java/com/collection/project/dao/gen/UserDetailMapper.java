@@ -1,4 +1,4 @@
-package com.test.project.dao.gen;
+package com.collection.project.dao.gen;
 
 import com.test.project.po.gen.UserDetail;
 import com.test.project.po.gen.UserDetailExample;

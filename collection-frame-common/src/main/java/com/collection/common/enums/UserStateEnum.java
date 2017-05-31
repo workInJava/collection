@@ -1,9 +1,9 @@
-package com.test.common.enums;
+package com.collection.common.enums;
 
 public enum UserStateEnum {
 
-	LOCK("Ëø¶¨")
-	,NORM("Õý³£")
+	LOCK("ï¿½ï¿½ï¿½ï¿½")
+	,NORM("ï¿½ï¿½ï¿½ï¿½")
 	;
 	private String dec;
 

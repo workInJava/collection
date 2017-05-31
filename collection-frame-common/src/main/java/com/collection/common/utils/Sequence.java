@@ -1,4 +1,4 @@
-package com.test.common.utils;
+package com.collection.common.utils;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -42,7 +42,7 @@ public class Sequence {
     }
     public static void main(String[] args)
     {
-        //≤‚ ‘
+        //????
         for(int i=0;i<10;i++)
         {
             System.out.println(nextId());

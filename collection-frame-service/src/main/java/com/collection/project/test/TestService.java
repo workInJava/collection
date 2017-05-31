@@ -1,4 +1,4 @@
-package com.text.project.test;
+package com.collection.project.test;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class TestService {
 	public void test(UserDetail record) {
 
 		//synchronized (record) {
-			System.out.println(Thread.currentThread().getName()+"---------------------------µÚÒ»´Î²éÑ¯----------------------------");
+			System.out.println(Thread.currentThread().getName()+"---------------------------ï¿½ï¿½Ò»ï¿½Î²ï¿½Ñ¯----------------------------");
 			UserDetailExample example = new UserDetailExample();
 			example.createCriteria().andUserIdEqualTo(record.getUserId());
 			UserDetail u1 = mapper.selectByExample(example).get(0);
@@ -56,7 +56,7 @@ public class TestService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread().getName()+"---------------------------µÚ¶þ´Î²éÑ¯----------------------------");
+			System.out.println(Thread.currentThread().getName()+"---------------------------ï¿½Ú¶ï¿½ï¿½Î²ï¿½Ñ¯----------------------------");
 			UserDetail u2 = mapper.selectByExample(example).get(0);
 			System.out.println(u2.getLoginName());
 		//}
@@ -70,7 +70,7 @@ public class TestService {
 				"2015-06-10 22:12:13"));
 		nvps.add(new BasicNameValuePair("showapi_appid", "3"));
 		nvps.add(new BasicNameValuePair("areaid", "101020300"));
-		nvps.add(new BasicNameValuePair("area", "ÉÏº£"));
+		nvps.add(new BasicNameValuePair("area", "ï¿½Ïºï¿½"));
 		nvps.add(new BasicNameValuePair("showapi_sign",
 				"simple_006513e01bd344fca03610d1fd0145f0"));
 		httpPost.setEntity(new UrlEncodedFormEntity(nvps));

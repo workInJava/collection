@@ -1,4 +1,4 @@
-package com.text.project.service.impl;
+package com.collection.project.service.impl;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.text.project.auth.sessiondao;
+package com.collection.project.auth.sessiondao;
 
 import java.io.Serializable;
 import java.util.Collection;

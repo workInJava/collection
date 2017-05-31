@@ -1,4 +1,4 @@
-package com.text.project.service;
+package com.collection.project.service;
 
 import com.test.project.po.gen.Permission;
 

@@ -1,4 +1,4 @@
-package com.text.project.auth.cache;
+package com.collection.project.auth.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -9,7 +9,7 @@ import org.apache.shiro.cache.CacheManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.test.common.redis.wrapper.JedisManager;
+import com.collection.common.redis.wrapper.JedisManager;
 
 public class RedisCacheManager implements CacheManager {
 
@@ -22,10 +22,10 @@ public class RedisCacheManager implements CacheManager {
 	
 	@Override
 	public <K, V> Cache<K, V> getCache(String name) throws CacheException {
-		logger.info("==================»ñÈ¡Ãû³ÆÎª: " + name + " µÄRedisCacheÊµÀý===========");
+		logger.info("==================ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Îª: " + name + " ï¿½ï¿½RedisCacheÊµï¿½ï¿½===========");
 		Cache c = caches.get(name);
 		if (c == null) {
-			logger.info("==================´´½¨RedisCache===========");
+			logger.info("==================ï¿½ï¿½ï¿½ï¿½RedisCache===========");
 			c = new RedisCache<K, V>(name,redisManager);
 			caches.put(name, c);
 		}

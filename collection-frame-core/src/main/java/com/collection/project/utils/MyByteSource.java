@@ -1,4 +1,4 @@
-package com.text.project.utils;
+package com.collection.project.utils;
 
 import java.io.File;
 import java.io.InputStream;

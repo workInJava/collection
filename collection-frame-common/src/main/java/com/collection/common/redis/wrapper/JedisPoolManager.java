@@ -1,4 +1,4 @@
-package com.test.common.redis.wrapper;
+package com.collection.common.redis.wrapper;
 
 import java.util.List;
 import java.util.Map;
@@ -11,9 +11,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.exceptions.JedisException;
 
-/**
- * JedisPool ¹ÜÀíÀà ÓÃÓÚµ¥¸öredis ¼¯Èº£¬ Ã¿¸öredis¼¯ÈºÓÉmaster-salve×é³É
- */
+
 public class JedisPoolManager {
 
 	private static final Logger logger = LoggerFactory.getLogger(JedisPoolManager.class);
@@ -21,7 +19,7 @@ public class JedisPoolManager {
 	private JedisPool jedisPool;
 
 	/**
-	 * redisµÄList¼¯ºÏ £¬ÏòkeyÕâ¸ölistÌí¼ÓÔªËØ
+	 * redisï¿½ï¿½Listï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½ï¿½listï¿½ï¿½ï¿½Ôªï¿½ï¿½
 	 */
 	public long rpush(String key, String string) {
 		Jedis jedis = null;
@@ -40,10 +38,10 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * »ñÈ¡keyÕâ¸öList£¬´ÓµÚ¼¸¸öÔªËØµ½µÚ¼¸¸öÔªËØ LRANGE key start
-	 * stop·µ»ØÁĞ±íkeyÖĞÖ¸¶¨Çø¼äÄÚµÄÔªËØ£¬Çø¼äÒÔÆ«ÒÆÁ¿startºÍstopÖ¸¶¨¡£
-	 * ÏÂ±ê(index)²ÎÊıstartºÍstop¶¼ÒÔ0Îªµ×£¬Ò²¾ÍÊÇËµ£¬ÒÔ0±íÊ¾ÁĞ±íµÄµÚÒ»¸öÔªËØ£¬ÒÔ1±íÊ¾ÁĞ±íµÄµÚ¶ş¸öÔªËØ£¬ÒÔ´ËÀàÍÆ¡£
-	 * Ò²¿ÉÒÔÊ¹ÓÃ¸ºÊıÏÂ±ê£¬ÒÔ-1±íÊ¾ÁĞ±íµÄ×îºóÒ»¸öÔªËØ£¬-2±íÊ¾ÁĞ±íµÄµ¹ÊıµÚ¶ş¸öÔªËØ£¬ÒÔ´ËÀàÍÆ¡£
+	 * ï¿½ï¿½È¡keyï¿½ï¿½ï¿½Listï¿½ï¿½ï¿½ÓµÚ¼ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½Ú¼ï¿½ï¿½ï¿½Ôªï¿½ï¿½ LRANGE key start
+	 * stopï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½keyï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½startï¿½ï¿½stopÖ¸ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Â±ï¿½(index)ï¿½ï¿½ï¿½ï¿½startï¿½ï¿½stopï¿½ï¿½ï¿½ï¿½0Îªï¿½×£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾ï¿½Ğ±ï¿½Äµï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½1ï¿½ï¿½Ê¾ï¿½Ğ±ï¿½ÄµÚ¶ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
+	 * Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Â±ê£¬ï¿½ï¿½-1ï¿½ï¿½Ê¾ï¿½Ğ±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½-2ï¿½ï¿½Ê¾ï¿½Ğ±ï¿½Äµï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 	 */
 	public List<String> lrange(String key, long start, long end) {
 		Jedis jedis = null;
@@ -62,7 +60,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ½«¹şÏ£±íkeyÖĞµÄÓòfieldµÄÖµÉèÎªvalue¡£
+	 * ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½keyï¿½Ğµï¿½ï¿½ï¿½fieldï¿½ï¿½Öµï¿½ï¿½Îªvalueï¿½ï¿½
 	 */
 	public void hset(String key, String field, String value) {
 		Jedis jedis = null;
@@ -80,7 +78,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * Ïòkey¸³Öµ
+	 * ï¿½ï¿½keyï¿½ï¿½Öµ
 	 */
 	public void set(String key, String value) {
 		Jedis jedis = null;
@@ -98,7 +96,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * Ïòkey¸³Öµ
+	 * ï¿½ï¿½keyï¿½ï¿½Öµ
 	 */
 	public void set(byte[] key, byte[] value) {
 		Jedis jedis = null;
@@ -116,7 +114,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * »ñÈ¡keyµÄÖµ
+	 * ï¿½ï¿½È¡keyï¿½ï¿½Öµ
 	 */
 	public String get(String key) {
 		Jedis jedis = null;
@@ -135,7 +133,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * »ñÈ¡keyµÄÖµ
+	 * ï¿½ï¿½È¡keyï¿½ï¿½Öµ
 	 */
 	public byte[] get(byte[] key) {
 		Jedis jedis = null;
@@ -157,7 +155,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ½«¶à¸öfield - value(Óò-Öµ)¶ÔÉèÖÃµ½¹şÏ£±íkeyÖĞ¡£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½field - value(ï¿½ï¿½-Öµ)ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ï£ï¿½ï¿½keyï¿½Ğ¡ï¿½
 	 */
 	public void hmset(String key, Map<String, String> map) {
 		Jedis jedis = null;
@@ -166,7 +164,7 @@ public class JedisPoolManager {
 			jedis.hmset(key, map);
 			jedis.close();
 		} catch (Exception e) {
-			logger.error("hmset³ö´í", e);
+			logger.error("hmsetï¿½ï¿½ï¿½ï¿½", e);
 			if (jedis != null) {
 				jedis.close();
 			}
@@ -175,7 +173,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ¸økey¸³Öµ£¬²¢ÉúÃüÖÜÆÚÉèÖÃÎªseconds
+	 * ï¿½ï¿½keyï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªseconds
 	 */
 	public void setex(String key, int seconds, String value) {
 		Jedis jedis = null;
@@ -193,7 +191,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ¸økey¸³Öµ£¬²¢ÉúÃüÖÜÆÚÉèÖÃÎªseconds
+	 * ï¿½ï¿½keyï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªseconds
 	 */
 	public byte[] setex(byte[] key, byte[] value, int seconds) {
 		Jedis jedis = null;
@@ -213,7 +211,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * Îª¸ø¶¨keyÉèÖÃÉúÃüÖÜÆÚ
+	 * Îªï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void expire(String key, int seconds) {
 		Jedis jedis = null;
@@ -231,7 +229,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ¼ì²ékeyÊÇ·ñ´æÔÚ
+	 * ï¿½ï¿½ï¿½keyï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean exists(String key) {
 		Jedis jedis = null;
@@ -250,7 +248,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ¼ì²ékeyÊÇ·ñ´æÔÚ
+	 * ï¿½ï¿½ï¿½keyï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	 */
 	public boolean exists(byte[] key) {
 		Jedis jedis = null;
@@ -274,7 +272,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ·µ»ØkeyÖµµÄÀàĞÍ none(key²»´æÔÚ),string(×Ö·û´®),list(ÁĞ±í),set(¼¯ºÏ),zset(ÓĞĞò¼¯),hash(¹şÏ£±í)
+	 * ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ none(keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½),string(ï¿½Ö·ï¿½ï¿½ï¿½),list(ï¿½Ğ±ï¿½),set(ï¿½ï¿½ï¿½ï¿½),zset(ï¿½ï¿½ï¿½ï¿½),hash(ï¿½ï¿½Ï£ï¿½ï¿½)
 	 */
 	public String type(String key) {
 		Jedis jedis = null;
@@ -293,7 +291,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ´Ó¹şÏ£±íkeyÖĞ»ñÈ¡fieldµÄvalue
+	 * ï¿½Ó¹ï¿½Ï£ï¿½ï¿½keyï¿½Ğ»ï¿½È¡fieldï¿½ï¿½value
 	 */
 	public String hget(String key, String field) {
 		Jedis jedis = null;
@@ -312,7 +310,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ·µ»Ø¹şÏ£±íkeyÖĞ£¬ËùÓĞµÄÓòºÍÖµ
+	 * ï¿½ï¿½ï¿½Ø¹ï¿½Ï£ï¿½ï¿½keyï¿½Ğ£ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	public Map<String, String> hgetAll(String key) {
 		Jedis jedis = null;
@@ -332,7 +330,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ·µ»Ø¹şÏ£±íkeyÖĞ£¬ËùÓĞµÄÓòºÍÖµ
+	 * ï¿½ï¿½ï¿½Ø¹ï¿½Ï£ï¿½ï¿½keyï¿½Ğ£ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½Öµ
 	 */
 	public Set<?> smembers(String key) {
 		Jedis jedis = null;
@@ -351,7 +349,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ·µ»ØÆ¥ÅäµÄ keys ÁĞ±í
+	 * ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ keys ï¿½Ğ±ï¿½
 	 */
 	public Set<byte[]> keys(String pattern) {
 		Jedis jedis = null;
@@ -371,7 +369,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ÒÆ³ıset¼¯ºÏÖĞµÄmemberÔªËØ
+	 * ï¿½Æ³ï¿½setï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½memberÔªï¿½ï¿½
 	 */
 	public void delSetObj(String key, String field) {
 		Jedis jedis = null;
@@ -389,7 +387,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * É¾³ıÔªËØ
+	 * É¾ï¿½ï¿½Ôªï¿½ï¿½
 	 */
 	public void del(byte[] key) {
 		Jedis jedis = null;
@@ -407,7 +405,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ÅĞ¶ÏmemberÔªËØÊÇ·ñÊÇ¼¯ºÏkeyµÄ³ÉÔ±¡£ÊÇ£¨true£©£¬·ñÔò£¨false£©
+	 * ï¿½Ğ¶ï¿½memberÔªï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½keyï¿½Ä³ï¿½Ô±ï¿½ï¿½ï¿½Ç£ï¿½trueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½falseï¿½ï¿½
 	 */
 	public boolean isNotField(String key, String field) {
 		Jedis jedis = null;
@@ -426,7 +424,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * Èç¹ûkeyÒÑ¾­´æÔÚ²¢ÇÒÊÇÒ»¸ö×Ö·û´®£¬½«value×·¼Óµ½keyÔ­À´µÄÖµÖ®ºó
+	 * ï¿½ï¿½ï¿½keyï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value×·ï¿½Óµï¿½keyÔ­ï¿½ï¿½ï¿½ï¿½ÖµÖ®ï¿½ï¿½
 	 */
 	public void append(String key, String value) {
 		Jedis jedis = null;
@@ -445,7 +443,7 @@ public class JedisPoolManager {
 	
 	
 	/**
-	 * Çå¿Õµ±Ç°µÄredis ¿â
+	 * ï¿½ï¿½Õµï¿½Ç°ï¿½ï¿½redis ï¿½ï¿½
 	 */
 	public void flushDB() {
 		Jedis jedis = null;
@@ -464,7 +462,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ·µ»Øµ±Ç°redis¿âËù´æ´¢Êı¾İµÄ´óĞ¡
+	 * ï¿½ï¿½ï¿½Øµï¿½Ç°redisï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½İµÄ´ï¿½Ğ¡
 	 */
 	public Long dbSize() {
 
@@ -487,7 +485,7 @@ public class JedisPoolManager {
 	}
 
 	/**
-	 * ¹Ø±Õ Redis
+	 * ï¿½Ø±ï¿½ Redis
 	 */
 	public void destory() {
 		jedisPool.destroy();

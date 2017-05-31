@@ -1,4 +1,4 @@
-package com.text.project.service;
+package com.collection.project.service;
 
 import com.test.project.po.gen.Role;
 
@@ -7,9 +7,9 @@ public interface IRoleService {
 
 	public void deleteRole(Long roleId);
 
-	// Ìí¼Ó½ÇÉ«-È¨ÏÞÖ®¼ä¹ØÏµ
+	// ï¿½ï¿½Ó½ï¿½É«-È¨ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ïµ
 	public void correlationPermissions(Long roleId, Long... permissionIds);
 
-	// ÒÆ³ý½ÇÉ«-È¨ÏÞÖ®¼ä¹ØÏµ
+	// ï¿½Æ³ï¿½ï¿½ï¿½É«-È¨ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ïµ
 	public void uncorrelationPermissions(Long roleId, Long... permissionIds);//
 }

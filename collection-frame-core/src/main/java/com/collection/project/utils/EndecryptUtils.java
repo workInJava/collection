@@ -1,4 +1,4 @@
-package com.text.project.utils;
+package com.collection.project.utils;
 import com.test.project.po.gen.UserDetail;
 
 import org.apache.shiro.codec.Base64; 
@@ -10,11 +10,11 @@ import org.springframework.util.StringUtils;
 
 import java.security.Key; 
 /** 
-* ±¸×¢£º shiro½øĞĞ¼ÓÃÜ½âÃÜµÄ¹¤¾ßÀà·â×° 
+* ï¿½ï¿½×¢ï¿½ï¿½ shiroï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½Ü½ï¿½ï¿½ÜµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×° 
 */ 
 public final class EndecryptUtils { 
     /** 
-     * base64½øÖÆ¼ÓÃÜ 
+     * base64ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ 
      * 
      * @param password 
      * @return 
@@ -24,7 +24,7 @@ public final class EndecryptUtils {
         password = Base64.encodeToString(bytes); 
     } 
     /** 
-     * base64½øÖÆ½âÃÜ 
+     * base64ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ 
      * @param cipherText 
      * @return 
      */ 
@@ -32,7 +32,7 @@ public final class EndecryptUtils {
         cipherText = Base64.decodeToString(cipherText); 
     } 
     /** 
-     * 16½øÖÆ¼ÓÃÜ 
+     * 16ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ 
      * 
      * @param password 
      * @return 
@@ -42,7 +42,7 @@ public final class EndecryptUtils {
         password = Hex.encodeToString(bytes); 
     } 
     /** 
-     * 16½øÖÆ½âÃÜ 
+     * 16ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ 
      * @param cipherText 
      * @return 
      */ 
@@ -56,15 +56,15 @@ public final class EndecryptUtils {
         return Base64.encodeToString(key.getEncoded()); 
     } 
     /** 
-     * ¶ÔÃÜÂë½øĞĞmd5¼ÓÃÜ,²¢·µ»ØÃÜÎÄºÍsalt£¬°üº¬ÔÚUser¶ÔÏóÖĞ 
-     * @param username ÓÃ»§Ãû 
-     * @param password ÃÜÂë 
-     * @return ÃÜÎÄºÍsalt 
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½md5ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½saltï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Userï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+     * @param username ï¿½Ã»ï¿½ï¿½ï¿½ 
+     * @param password ï¿½ï¿½ï¿½ï¿½ 
+     * @return ï¿½ï¿½ï¿½Äºï¿½salt 
      */ 
     public static void md5Password(UserDetail userDetail){ 
         SecureRandomNumberGenerator secureRandomNumberGenerator=new SecureRandomNumberGenerator(); 
         String salt= secureRandomNumberGenerator.nextBytes().toHex(); 
-        //×éºÏusername,Á½´Îµü´ú£¬¶ÔÃÜÂë½øĞĞ¼ÓÃÜ 
+        //ï¿½ï¿½ï¿½username,ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¼ï¿½ï¿½ï¿½ 
         String password_cipherText= new Md5Hash(StringUtils.trimAllWhitespace(userDetail.getPassword()),StringUtils.trimAllWhitespace(userDetail.getLoginName())+salt,2).toBase64(); 
         userDetail.setPassword(password_cipherText); 
         userDetail.setSalt(salt); 

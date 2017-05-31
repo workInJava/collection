@@ -1,4 +1,4 @@
-package com.text.project.test;
+package com.collection.project.test;
 
 import javax.annotation.Resource;
 
