@@ -45,7 +45,7 @@
 		<property name="storedCredentialsHexEncoded" value="false"/>
 	</bean>
 
-	<bean id="shiroDbRealm" class="com.text.project.auth.realm.ShiroDbRealm">
+	<bean id="shiroDbRealm" class="com.collection.project.auth.realm.ShiroDbRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher"/>
 		<property name="cacheManager" ref="redisCacheManager"/>
 		<property name="authenticationCachingEnabled" value="true"/>
@@ -68,18 +68,18 @@
 		<property name="HttpOnly" value="true"/>
 	</bean>
 	
-	<bean id="shiroListener" class="com.text.project.auth.listeners.ShiroListener">
+	<bean id="shiroListener" class="com.collection.project.auth.listeners.ShiroListener">
 	</bean>
 	
 	<!-- JedisPool manager -->
-	<bean id="jedisManager" class="com.test.common.redis.wrapper.JedisManager">
+	<bean id="jedisManager" class="com.collection.common.redis.wrapper.JedisManager">
         <property name="jedisPool" ref="jedisPool"/>
     </bean>
     <!-- <bean id="jedisPoolManager" class="com.test.common.redis.wrapper.JedisPoolManager">
         <property name="jedisPool" ref="jedisPool"/>
     </bean> -->
     
-     <bean id="redisCacheManager" class="com.text.project.auth.cache.RedisCacheManager">
+     <bean id="redisCacheManager" class="com.collection.project.auth.cache.RedisCacheManager">
         <property name="redisManager" ref="jedisManager"/>
     </bean>
 	
@@ -88,11 +88,11 @@
 		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
 	</bean> -->
 	
-	<bean id="sessionDao" class="com.text.project.auth.sessiondao.CustomShiroSessionDAO">
+	<bean id="sessionDao" class="com.collection.project.auth.sessiondao.CustomShiroSessionDAO">
 		<property name="shiroSessionRepository" ref="shiroSessionRepository"/>
 	</bean>
 	
-	<bean id="shiroSessionRepository" class="com.text.project.auth.sessiondao.JedisShiroSessionRepository">
+	<bean id="shiroSessionRepository" class="com.collection.project.auth.sessiondao.JedisShiroSessionRepository">
 		<property name="jedisManager" ref="jedisManager"/>
 	</bean>
 	

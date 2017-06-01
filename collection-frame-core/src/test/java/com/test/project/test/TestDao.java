@@ -11,7 +11,7 @@ import com.test.project.dao.gen.UserDetailMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={
-	"classpath*:spring/wei-dataSource.xml"
+        "classpath*:spring/collection-dataSource.xml"
 	})
 public class TestDao {
 	
